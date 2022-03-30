@@ -1,0 +1,139 @@
+{%extends 'base.html'%} {%block head%}
+<title>Home Page</title>
+{% endblock %} {% block body %}
+<div class="container mt-4">
+    <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+            <tr>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Position</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <img
+                            src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                            alt="avt"
+                            style="width: 45px; height: 45px"
+                            class="rounded-circle"
+                        />
+                        <div class="ms-3">
+                            <p class="fw-bold mb-1">{{user.fullName}}</p>
+                            <p class="text-muted mb-0">{{user.email}}</p>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <p class="fw-normal mb-1">{{user.job}}</p>
+                    <p class="text-muted mb-0">{{user.title}}</p>
+                </td>
+                <td>
+                    <span class="badge badge-success rounded-pill d-inline"
+                        >Active</span
+                    >
+                </td>
+                <td>{{user.position}}</td>
+                <td>
+                    <button
+                        type="button"
+                        class="btn btn-link btn-sm btn-rounded"
+                    >
+                        <a href="/delete/{{user.id}}">Delete</a>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-link btn-sm btn-rounded"
+                    >
+                        Edit
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Form -->
+    <div class="mt-5">
+        <form action="/" method="POST">
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="fullName"
+                            >Full name</label
+                        >
+                        <input
+                            type="text"
+                            id="fullName"
+                            class="form-control"
+                            name="fullName"
+                            placeholder="fullname example..."
+                        />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            class="form-control"
+                            placeholder="example@gmail.com"
+                            name="email"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="job">Job name</label>
+                        <input
+                            type="text"
+                            id="job"
+                            class="form-control"
+                            name="job"
+                            placeholder="job example..."
+                        />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="title">Title</label>
+                        <input
+                            type="text"
+                            id="title"
+                            class="form-control"
+                            placeholder="title..."
+                            name="title"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="position">Position</label>
+                <input
+                    type="text"
+                    id="position"
+                    class="form-control"
+                    placeholder="position..."
+                    name="position"
+                />
+            <div>
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4 mt-4">
+                Save changes
+            </button>
+        </form>
+    </div>
+    <!-- End Form -->
+</div>
+{% endblock %}

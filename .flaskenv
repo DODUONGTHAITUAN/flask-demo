@@ -1,0 +1,4 @@
+FLASK_APP=server
+FLASK_RUN_HOST=localhost
+FLASK_RUN_PORT=8080
+FLASK_ENV=development
